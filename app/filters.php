@@ -24,6 +24,41 @@ App::after(function($request, $response)
 
 /*
 |--------------------------------------------------------------------------
+| Sentry Filtros de Auntenticacion
+|--------------------------------------------------------------------------
+|
+| Los siguientes filtros son usados para verificar que el usuario de la
+| sesion actual esta logueado dentro de esta aplicacion.
+|
+*/
+
+Route::filter('Sentry', function()
+{
+	if (! Sentry::check()) {
+		return Redirect::to('/login')->with('alert-warning','Necesitas iniciar sesión.');
+	}
+});
+
+Route::filter('hasAccess', function($route, $request, $value)
+{
+	$user = Sentry::getUser();
+	if( ! $user->hasAccess($value))
+	{
+		return Redirect::back()->with('alert-warning','No tienes los privilegios suficientes para realizar esta acción.');
+	}
+});
+
+Route::filter('inGroup', function($route, $request, $value)
+{
+	$user = Sentry::getUser();
+	if( ! $user->hasAccess($value))
+	{
+		return Redirect::back()->with('alert-warning','No tienes los privilegios suficientes para realizar esta acción.');
+	}
+});
+
+/*
+|--------------------------------------------------------------------------
 | Authentication Filters
 |--------------------------------------------------------------------------
 |
