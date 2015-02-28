@@ -35,7 +35,7 @@ App::after(function($request, $response)
 Route::filter('Sentry', function()
 {
 	if (! Sentry::check()) {
-		return Redirect::to('/login')
+		return Redirect::to('/')
 		->with('alert-warning','Necesitas iniciar sesión.');
 	}
 });
