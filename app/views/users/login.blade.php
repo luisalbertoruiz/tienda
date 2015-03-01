@@ -18,7 +18,7 @@ Tienda
 								<span class="input-group-addon" id="basic-addon1">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								</span>
-								<input type="text" class="form-control" id="username" name="username" required placeholder="Usuario" pattern=".{5,10}" maxlength="10" autocomplete="off">
+								<input type="text" class="form-control" id="username" name="username" required placeholder="Usuario" pattern=".{4,10}" maxlength="10" autocomplete="off">
 							</div>
 						</div>
 						<div class="form-group">
@@ -26,7 +26,7 @@ Tienda
 								<span class="input-group-addon" id="basic-addon1">
 									<span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
 								</span>
-								<input type="password" class="form-control" id="password" name="password" required placeholder="Contraseña" pattern=".{5,10}" maxlength="10" autocomplete="off">
+								<input type="password" class="form-control" id="password" name="password" required placeholder="Contraseña" pattern=".{4,10}" maxlength="10" autocomplete="off">
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary pull-right">Ingresar</button>

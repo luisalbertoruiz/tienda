@@ -15,4 +15,10 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function __construct()
+	{
+		$user = Sentry::getUser();
+		View::share('user', $user);
+	}
+
 }

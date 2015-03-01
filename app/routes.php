@@ -20,11 +20,17 @@ $response->headers->set('Cache-Control','nocache, no-store, max-age=0, must-reva
 $response->headers->set('Pragma','no-cache');
 $response->headers->set('Expires','Fri, 01 Jan 1990 00:00:00 GMT');
 });
-// Usuarios
+// Usuario
 Route::get ('/', 'UsersController@login');
 Route::post('/loged', 'UsersController@loged');
-
-
+Route::get ('/logout', 'UsersController@logout');
+//Rol Administrador
+Route::group(array('before' => 'Sentry|inGroup:admin'), function(){
+});
+//Rol Usuarios
+Route::group(array('before' => 'Sentry|inGroup:users'), function(){
+Route::get ('/SCA', 'HomeController@home');	
+});
 
 /*Route::get('sentry', function()
 {

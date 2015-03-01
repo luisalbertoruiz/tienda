@@ -104,15 +104,15 @@ class UsersController extends \BaseController {
 	{
 		try
 		{
-		    // Login credentials
+		    // Credenciales de logueo
 		    $credentials = array(
 				'username' => Input::get('username'),
 				'password' => Input::get('password')
 		    );
 
-		    // Authenticate the user
+		    // Autentificar el usuario
 		    $user = Sentry::authenticate($credentials, false);
-		    return Redirect::to('/admin')->with('alert-success','Bienvenido al area de Administración.');
+		    return Redirect::to('/SCA')->with('alert-success','Bienvenido al area de Administración.');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{
@@ -145,7 +145,7 @@ class UsersController extends \BaseController {
 	public function logout()
 	{
 		Sentry::logout();
-		return Redirect::to('/login')->with('alert-success','Hasta luego.');
+		return Redirect::to('/')->with('alert-success','Hasta luego.');
 	}
 
 }

@@ -18,16 +18,18 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body @yield('body') >
+	<body>
+	<div class="contenedor">
 		@yield('content')
 		@yield('css')
 		{{ HTML::script('js/jquery.js') }}
 		{{ HTML::script('js/bootstrap.js') }}
 		{{ HTML::script('js/TweenMax.js') }}
-		{{ HTML::script('js/citlalli.js') }}
 		{{ HTML::script('js/toastr.js') }}
+		{{ HTML::script('js/citlalli.js') }}
 		@include('layouts.alertas')
 		@yield('js')
 		@yield('script')
+	</div>
 	</body>
 </html>
