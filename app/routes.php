@@ -29,7 +29,15 @@ Route::group(array('before' => 'Sentry|inGroup:admin'), function(){
 });
 //Rol Usuarios
 Route::group(array('before' => 'Sentry|inGroup:users'), function(){
-Route::get ('/SCA', 'HomeController@home');	
+Route::get ('/home', 'HomeController@home');
+// Categorias
+Route::get ('/categorias','CategoriasController@index');
+Route::get ('/categorias/nuevo','CategoriasController@create');
+Route::post('/categorias/guardar','CategoriasController@store');
+Route::get ('/categorias/mostrar/{id}','CategoriasController@show');
+Route::get ('/categorias/editar/{id}','CategoriasController@edit');
+Route::post('/categorias/actualizar/{id}','CategoriasController@update');
+Route::get ('/categorias/eliminar/{id}','CategoriasController@destroy');	
 });
 
 /*Route::get('sentry', function()
