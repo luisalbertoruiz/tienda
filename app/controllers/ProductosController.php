@@ -10,7 +10,9 @@ class ProductosController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$productos = Producto::all();
+		return View::make('productos.index')
+		->with('productos',$productos);
 	}
 
 	/**
@@ -21,7 +23,8 @@ class ProductosController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('productos.create');
+
 	}
 
 	/**

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Tienda
+Categorias
 @stop
 @section('content')
 @include('layouts.sidebarMenu')
@@ -24,7 +24,7 @@ Tienda
 		</div>
 		<div class="panel-body">
 		   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
-		   		<form action="" method="POST" role="form">
+		   		<form action="{{ URL::to('/categorias/guardar') }}" method="POST" role="form">
 		   			<div class="form-group">
 		   				<label for="nombre">Nombre</label>
 		   				<input name="nombre" type="text" class="form-control" id="nombre">
