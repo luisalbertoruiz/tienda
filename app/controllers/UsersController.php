@@ -112,7 +112,7 @@ class UsersController extends \BaseController {
 
 		    // Autentificar el usuario
 		    $user = Sentry::authenticate($credentials, false);
-		    return Redirect::to('/SCA')->with('alert-success','Bienvenido al area de Administración.');
+		    return Redirect::to('/home')->with('alert-success','Bienvenido al area de Administración.');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{

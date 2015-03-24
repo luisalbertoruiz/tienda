@@ -25,21 +25,18 @@ Productos
 			<th>Nombre</th>
 			<th>Marca</th>
 			<th>Modelo</th>
-			<th>Precio</th>
-			<th>Costo</th>
-			<th>Existencia</th>
-			<th>producto</th>
+			<th>Categoria</th>
+			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
 	@foreach($productos as $producto)
 	<tr>
-		<td>{{ $producto->id }}</td>
+		<td>{{ $producto->codigo }}</td>
 		<td>{{ $producto->nombre }}</td>
-		<td>{{ $producto->rfc }}</td>
-		<td>{{ $producto->id }}</td>
-		<td>{{ $producto->nombre }}</td>
-		<td>{{ $producto->rfc }}</td>
+		<td>{{ $producto->marca }}</td>
+		<td>{{ $producto->modelo }}</td>
+		<td>{{ $producto->categoria_id }}</td>
 		<td>
 		<a href="{{URL::to('/productos/mostrar/'.$producto->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
 		<a href="{{URL::to('/productos/editar/'.$producto->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
