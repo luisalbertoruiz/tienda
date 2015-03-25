@@ -2,61 +2,64 @@
 @section('title')
 Categoria
 @stop
+@section('body')
+class="page-body"
+@stop
 @section('content')
-@include('layouts.sidebarMenu')
-<div class="pagina-contenedor">
-@include('layouts.profilebar')
-<div class="row">
-	<div class="pan">
-		<ul>
-			<li><a href=""><i class="entypo-home"></i>Home</a></li>
-			<li><a href="">Almacen</a></li>
-			<li class="activo">Categorias</li>
-		</ul>
+<div class="page-container">	
+	@include('layouts.sidebarMenu')
+	<div class="main-content">
+		@include('layouts.profilebar')
+		<hr>
+		<ol class="breadcrumb bc-3">
+			<li>
+				<a href="{{ URL::to('/home')}}"><i class="entypo-home"></i>Home</a>
+			</li>
+			<li>
+				<a href="{{ URL::to('/home')}}">Almacen</a>
+			</li>
+			<li class="active">
+				<strong>Categorias</strong>
+			</li>
+		</ol>
+		<hr>
+		<a href="{{ URL::to('/categorias/nuevo')}}" class="btn btn-success pull-right">Nuevo<i class="entypo-plus"></i></a>
+		<br><br><br>
+		<table class="table table-bordered datatable" id="tabla">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+			@foreach($categorias as $categoria)
+			<tr>
+				<td>{{ $categoria->nombre }}</td>
+				<td>{{ $categoria->descripcion }}</td>
+				<td>
+				<a href="{{URL::to('/categorias/editar/'.$categoria->id)}}" class="btn btn-orange btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="glyphicon glyphicon-pencil"></i></a>
+				<a href="javascript:;" onclick="eliminaRegistro('{{URL::to('/categorias/eliminar/'.$categoria->id)}}');" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
+				</td>
+			</tr>
+			@endforeach
+			</tbody>
+		</table>
+		<div id="dialog" title="¿Deseas eliminar el registro?">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Este registro sera borrado permanentemente.¿Estas seguro?</p>
+		</div>
 	</div>
-</div>
-<hr>
-<a href="{{ URL::to('/categorias/nuevo')}}" class="btn btn-success pull-right">Nuevo<i class="entypo-plus"></i></a>
-<br><br><br>
-<table class="table table-bordered datatable" id="tabla">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Nombre</th>
-			<th>Descripción</th>
-			<th>Acciones</th>
-		</tr>
-	</thead>
-	<tbody>
-	@foreach($categorias as $categoria)
-	<tr>
-		<td>{{ $categoria->id }}</td>
-		<td>{{ $categoria->nombre }}</td>
-		<td>{{ $categoria->descripcion }}</td>
-		<td>
-		<a href="{{URL::to('/categorias/mostrar/'.$categoria->id)}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
-		<a href="{{URL::to('/categorias/editar/'.$categoria->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="glyphicon glyphicon-pencil"></i></a>
-		<a href="javascript:;" onclick="eliminaRegistro('{{URL::to('/categorias/eliminar/'.$categoria->id)}}');" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
-		</td>
-	</tr>
-	@endforeach
-	</tbody>
-</table>
-<div id="dialog" title="¿Deseas eliminar el registro?">
-<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Este registro sera borrado permanentemente.¿Estas seguro?</p>
-</div>
 </div>
 @stop
 @section('css')
 {{ HTML::style('css/dataTables.css') }}
 {{ HTML::style('css/dataTables.bootstrap.css') }}
-{{ HTML::style('css/jquery-ui.css') }}
 @stop
 @stop
 @section('js')
 {{ HTML::script('js/dataTables.js') }}
 {{ HTML::script('js/dataTables.bootstrap.js') }}
-{{ HTML::script('js/jquery-ui.js') }}
 @stop
 @section('script')
 <script>

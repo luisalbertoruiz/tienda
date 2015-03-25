@@ -7,10 +7,14 @@
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 		<title>@yield('title')</title>
 		<!-- CSS -->
-		{{ HTML::style('css/bootstrap.css') }}
-		{{ HTML::style('css/citlalli.css') }}
 		{{ HTML::style('css/entypo.css') }}
+		{{ HTML::style('css/font-awesome.css') }}
+		{{ HTML::style('css/bootstrap.css') }}
+		{{ HTML::style('css/core.css') }}
+		{{ HTML::style('css/theme.css') }}
+		{{ HTML::style('css/forms.css') }}
 		{{ HTML::style('css/toastr.css') }}
+		{{ HTML::style('css/jquery-ui.css') }}
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -18,18 +22,20 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
-	<div class="contenedor">
+	<body @yield('body')>
 		@yield('content')
 		@yield('css')
-		{{ HTML::script('js/jquery.js') }}
-		{{ HTML::script('js/bootstrap.js') }}
 		{{ HTML::script('js/TweenMax.js') }}
+		{{ HTML::script('js/jquery.js') }}
+		{{ HTML::script('js/jquery-ui.js') }}
+		{{ HTML::script('js/bootstrap.js') }}
+		{{ HTML::script('js/joinable.js') }}
+		{{ HTML::script('js/resizeable.js') }}
+		{{ HTML::script('js/neon-api.js') }}
 		{{ HTML::script('js/toastr.js') }}
-		{{ HTML::script('js/citlalli.js') }}
+		{{ HTML::script('js/neon-custom.js') }}
 		@include('layouts.alertas')
 		@yield('js')
 		@yield('script')
-	</div>
 	</body>
 </html>

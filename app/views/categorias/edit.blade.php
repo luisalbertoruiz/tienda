@@ -2,25 +2,34 @@
 @section('title')
 Categorias
 @stop
+@section('body')
+class="page-body"
+@stop
 @section('content')
+<div class="page-container">	
 @include('layouts.sidebarMenu')
-<div class="pagina-contenedor">
+<div class="main-content">
 @include('layouts.profilebar')
-<div class="row">
-	<div class="pan">
-		<ul>
-			<li><a href=""><i class="entypo-home"></i>Home</a></li>
-			<li><a href="">Almacen</a></li>
-			<li><a href="">Categorias</a></li>
-			<li class="activo">Editar</li>
-		</ul>
-	</div>
-</div>
+<hr>
+<ol class="breadcrumb bc-3">
+	<li>
+		<a href="{{ URL::to('/home')}}"><i class="entypo-home"></i>Home</a>
+	</li>
+	<li>
+		<a href="{{ URL::to('/home')}}">Almacen</a>
+	</li>
+	<li>
+		<a href="{{ URL::to('/categorias')}}">Categorias</a>
+	</li>
+	<li class="active">
+		<strong>Editar</strong>
+	</li>
+</ol>
 <hr>
 <div class="col-xs-12">
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
-		Edita la Categoría
+		<div class="panel-title">Edita la Categoría</div>
 		</div>
 		<div class="panel-body">
 		   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
@@ -33,28 +42,25 @@ Categorias
 		   				<label for="descripcion">Descripcion</label>
 		   				<textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" style="resize: none;">{{ $categoria->descripcion }}</textarea>
 		   			</div>
-		   			<a href="" class="btn btn-warning">Regresar</a>
-		   			<button type="submit" class="btn btn-primary pull-right">Guardar</button>
+		   			<a href="{{ URL::previous() }}" class="btn btn-orange">Regresar</a>
+		   			<button type="submit" class="btn btn-success pull-right">Cambiar</button>
 		   		</form>
 		   </div>
 		</div>
 	</div>
 </div>
 </div>
+</div>
 @stop
 @section('css')
-{{ HTML::style('css/dataTables.css') }}
-{{ HTML::style('css/dataTables.bootstrap.css') }}
 @stop
 @stop
 @section('js')
-{{ HTML::script('js/dataTables.js') }}
-{{ HTML::script('js/dataTables.bootstrap.js') }}
 @stop
 @section('script')
 <script>
 $(document).ready(function() {
-	$('#tabla').DataTable();
+	
 });
 </script>
 @stop
