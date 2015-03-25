@@ -99,19 +99,19 @@ class CategoriasController extends \BaseController {
 	 */
 	public function update($id)
 	{
-			$categoria = Categoria::find($id);
-			if (is_null ($categoria))
-			{
-				App::abort(404);
-			}
-			else
-			{
-				$categoria->nombre = Str::title(Str::lower(Input::get('nombre')));
-				$categoria->descripcion = Input::get('descripcion');
-				$categoria->save();
-				return Redirect::to('/categorias/')
-				->with('alert-success', 'Se ha editado la categoría.');
-			}
+		$categoria = Categoria::find($id);
+		if (is_null ($categoria))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$categoria->nombre = Str::title(Str::lower(Input::get('nombre')));
+			$categoria->descripcion = Input::get('descripcion');
+			$categoria->save();
+			return Redirect::to('/categorias/')
+			->with('alert-success', 'Se ha editado la categoría.');
+		}
 	}
 
 	/**
@@ -123,17 +123,17 @@ class CategoriasController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-			$categoria = Categoria::find($id);
-			if (is_null ($categoria))
-			{
-				App::abort(404);
-			}
-			else
-			{
-				$categoria->delete();
-				return Redirect::to('/categorias')
-				->with('alert-danger', 'Se ha eliminado la categoría.');
-			}
+		$categoria = Categoria::find($id);
+		if (is_null ($categoria))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$categoria->delete();
+			return Redirect::to('/categorias')
+			->with('alert-danger', 'Se ha eliminado la categoría.');
+		}
 	}
 
 }

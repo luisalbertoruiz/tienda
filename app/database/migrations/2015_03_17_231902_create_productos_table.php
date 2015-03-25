@@ -19,10 +19,10 @@ class CreateProductosTable extends Migration {
 			$table->string('nombre');
 			$table->string('marca');
 			$table->string('modelo');
-			$table->string('descripcion');
-			$table->integer('costo');
-			$table->integer('precio');
+			$table->decimal('costo', 9, 2);
+			$table->decimal('precio', 9, 2);
 			$table->integer('existencia');
+			$table->string('descripcion');
 			$table->integer('categoria_id')->unsigned();
 			$table->foreign('categoria_id')->references('id')->on('categorias');
 			$table->timestamps();

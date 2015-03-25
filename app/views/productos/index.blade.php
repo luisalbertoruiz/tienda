@@ -28,17 +28,28 @@ class="page-body"
 		<table class="table table-bordered datatable" id="tabla">
 			<thead>
 				<tr>
+					<th>Codigo</th>
 					<th>Nombre</th>
-					<th>Descripción</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Existencia</th>
+					<th>Precio</th>
+					<th>Categoria</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 			@foreach($productos as $producto)
 			<tr>
+				<td>{{ $producto->codigo }}</td>
 				<td>{{ $producto->nombre }}</td>
-				<td>{{ $producto->descripcion }}</td>
+				<td>{{ $producto->marca }}</td>
+				<td>{{ $producto->modelo }}</td>
+				<td>{{ $producto->existencia }}</td>
+				<td>{{ $producto->precio }}</td>
+				<td>{{ $producto->categoria->nombre }}</td>
 				<td>
+				<a href="{{URL::to('/productos/mostrar/'.$producto->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
 				<a href="{{URL::to('/productos/editar/'.$producto->id)}}" class="btn btn-orange btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="glyphicon glyphicon-pencil"></i></a>
 				<a href="javascript:;" onclick="eliminaRegistro('{{URL::to('/productos/eliminar/'.$producto->id)}}');" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
 				</td>

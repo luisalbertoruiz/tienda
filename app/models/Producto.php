@@ -5,6 +5,6 @@ class Producto extends \Eloquent {
 	protected $softDelete = true;
 	public function categoria()
 	{
-		return $this->hasOne('Categoria');
+		return $this->belongsto('Categoria');
 	}
 }
