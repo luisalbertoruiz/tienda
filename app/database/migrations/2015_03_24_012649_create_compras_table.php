@@ -23,7 +23,6 @@ class CreateComprasTable extends Migration {
 		});
 	}
 
-
 	/**
 	 * Reverse the migrations.
 	 *

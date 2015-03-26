@@ -10,7 +10,10 @@ class ComprasController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$compras = Compra::all();
+		return View::make('compras.index')
+		->with('compras',$compras)
+		;
 	}
 
 	/**
@@ -21,7 +24,10 @@ class ComprasController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$productos = Producto::all();
+		return View::make('compras.create')
+		->with('productos',$productos);
+
 	}
 
 	/**
@@ -32,7 +38,13 @@ class ComprasController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$compra              = new Compra();
+		$compra->costo       = Input::get('costo');
+		$compra->cantidad    = Input::get('cantidad');
+		$compra->producto_id = Input::get('producto');
+		$compra->save();
+		return Redirect::to('/compras')
+		->with('alert-success', 'Se ha agregado la compra.');
 	}
 
 	/**
@@ -44,7 +56,16 @@ class ComprasController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$compra = Compra::find($id);
+		if (is_null ($compra))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('compras.show')
+			->with('compra',$compra);
+		}
 	}
 
 	/**
@@ -56,7 +77,18 @@ class ComprasController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$compra = Compra::find($id);
+		if (is_null ($compra))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$categorias = Categoria::all();
+			return View::make('compras.edit')
+			->with('compra',$compra)
+			->with('categorias',$categorias);
+		}
 	}
 
 	/**
@@ -68,7 +100,26 @@ class ComprasController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$compra = Compra::find($id);
+		if (is_null ($compra))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$compra->codigo       = Str::upper(Input::get('codigo'));
+			$compra->nombre       = Str::title(Str::lower(Input::get('nombre')));
+			$compra->marca        = Str::title(Str::lower(Input::get('marca')));
+			$compra->modelo       = Str::title(Str::lower(Input::get('modelo')));
+			$compra->costo        = Input::get('costo');
+			$compra->precio       = Input::get('precio');
+			$compra->existencia   = Input::get('existencia');
+			$compra->descripcion  = Input::get('descripcion');
+			$compra->categoria_id = Input::get('categoria');
+			$compra->save();
+			return Redirect::to('/compras')
+			->with('alert-success', 'Se ha editado el compra.');
+		}
 	}
 
 	/**
@@ -80,7 +131,17 @@ class ComprasController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$compra = Compra::find($id);
+		if (is_null ($compra))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$compra->delete();
+			return Redirect::to('/compras')
+			->with('alert-danger', 'Se ha eliminado el compra.');
+		}
 	}
 
 }

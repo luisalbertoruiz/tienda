@@ -45,7 +45,15 @@ Route::post('/productos/guardar','ProductosController@store');
 Route::get ('/productos/mostrar/{id}','ProductosController@show');
 Route::get ('/productos/editar/{id}','ProductosController@edit');
 Route::post('/productos/actualizar/{id}','ProductosController@update');
-Route::get ('/productos/eliminar/{id}','ProductosController@destroy');	
+Route::get ('/productos/eliminar/{id}','ProductosController@destroy');
+// Compras
+Route::get ('/compras','ComprasController@index');
+Route::get ('/compras/nuevo','ComprasController@create');
+Route::post('/compras/guardar','ComprasController@store');
+Route::get ('/compras/mostrar/{id}','ComprasController@show');
+Route::get ('/compras/editar/{id}','ComprasController@edit');
+Route::post('/compras/actualizar/{id}','ComprasController@update');
+Route::get ('/compras/eliminar/{id}','ComprasController@destroy');	
 });
 
 /*Route::get('sentry', function()
