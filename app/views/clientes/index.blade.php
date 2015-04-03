@@ -1,0 +1,1 @@
+/var/www/tienda/app/views/clientes/index.blade.php

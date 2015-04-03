@@ -26,8 +26,22 @@ Route::post('/loged', 'UsersController@loged');
 Route::get ('/logout', 'UsersController@logout');
 //Rol Administrador
 Route::group(array('before' => 'Sentry|inGroup:admin'), function(){
+// Usuarios
+Route::get ('/usuarios','UsersController@index');
+Route::get ('/usuarios/nuevo','UsersController@create');
+Route::post('/usuarios/guardar','UsersController@store');
+Route::get ('/usuarios/mostrar/{id}','UsersController@show');
+Route::get ('/usuarios/editar/{id}','UsersController@edit');
+Route::post('/usuarios/actualizar/{id}','UsersController@update');
+Route::get ('/usuarios/eliminar/{id}','UsersController@destroy');
+// Productos
+Route::get ('/productos/eliminar/{id}','ProductosController@destroy');
+// Categorias
+Route::get ('/categorias/eliminar/{id}','CategoriasController@destroy');
+// Compras
+Route::get ('/compras/eliminar/{id}','ComprasController@destroy');
 });
-//Rol Usuarios
+// Rol Users
 Route::group(array('before' => 'Sentry|inGroup:users'), function(){
 Route::get ('/home', 'HomeController@home');
 // Categorias
@@ -37,7 +51,6 @@ Route::post('/categorias/guardar','CategoriasController@store');
 Route::get ('/categorias/mostrar/{id}','CategoriasController@show');
 Route::get ('/categorias/editar/{id}','CategoriasController@edit');
 Route::post('/categorias/actualizar/{id}','CategoriasController@update');
-Route::get ('/categorias/eliminar/{id}','CategoriasController@destroy');
 // Productos
 Route::get ('/productos','ProductosController@index');
 Route::get ('/productos/nuevo','ProductosController@create');
@@ -45,7 +58,29 @@ Route::post('/productos/guardar','ProductosController@store');
 Route::get ('/productos/mostrar/{id}','ProductosController@show');
 Route::get ('/productos/editar/{id}','ProductosController@edit');
 Route::post('/productos/actualizar/{id}','ProductosController@update');
-Route::get ('/productos/eliminar/{id}','ProductosController@destroy');	
+// Compras
+Route::get ('/compras','ComprasController@index');
+Route::get ('/compras/nuevo','ComprasController@create');
+Route::post('/compras/guardar','ComprasController@store');
+Route::get ('/compras/mostrar/{id}','ComprasController@show');
+Route::get ('/compras/editar/{id}','ComprasController@edit');
+Route::post('/compras/actualizar/{id}','ComprasController@update');
+// Clientes
+Route::get ('/clientes','ClientesController@index');
+Route::get ('/clientes/nuevo','ClientesController@create');
+Route::post('/clientes/guardar','ClientesController@store');
+Route::get ('/clientes/mostrar/{id}','ClientesController@show');
+Route::get ('/clientes/editar/{id}','ClientesController@edit');
+Route::post('/clientes/actualizar/{id}','ClientesController@update');
+Route::get ('/clientes/eliminar/{id}','ClientesController@destroy');
+// Proveedores
+Route::get ('/proveedores','ProveedoresController@index');
+Route::get ('/proveedores/nuevo','ProveedoresController@create');
+Route::post('/proveedores/guardar','ProveedoresController@store');
+Route::get ('/proveedores/mostrar/{id}','ProveedoresController@show');
+Route::get ('/proveedores/editar/{id}','ProveedoresController@edit');
+Route::post('/proveedores/actualizar/{id}','ProveedoresController@update');
+Route::get ('/proveedores/eliminar/{id}','ProveedoresController@destroy');
 });
 
 /*Route::get('sentry', function()

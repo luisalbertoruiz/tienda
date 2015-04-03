@@ -26,7 +26,7 @@
 		</a>
 	</div>
 	<div class="col-sm-4">
-		<a href="">
+		<a href="{{ URL::to('/productos')}}">
 			<div class="tile-title tile-purple">
 				<div class="icon">
 					<i class="entypo-box"></i>
@@ -55,7 +55,7 @@
 		</a>
 	</div>
 	<div class="col-sm-4">
-		<a href="">
+		<a href="{{ URL::to('/usuarios')}}">
 			<div class="tile-title tile-orange">
 				<div class="icon">
 					<i class="entypo-usuarios"></i>

@@ -42,10 +42,18 @@
 		</li>
 		<li>
 			<a href=""><i class="entypo-book"></i><span>Catálogos</span></a>
+			<ul>
+				<li>
+					<a href="#"><i class="entypo-usuario"></i><span>Clientes</span></a>
+				</li>
+				<li>
+					<a href="#"><i class="entypo-globe"></i><span>Proveedores</span></a>
+				</li>
+			</ul>
 		</li>
 		
 		<li>
-			<a href=""><i class="entypo-usuarios"></i><span>Usuarios</span></a>
+			<a href="{{ URL::to('/usuarios')}}"><i class="entypo-usuarios"></i><span>Usuarios</span></a>
 		</li>
 		<li>
 			<a href=""><i class="entypo-cog"></i><span>Otros</span></a>
