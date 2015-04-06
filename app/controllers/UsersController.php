@@ -23,7 +23,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.create');
 	}
 
 	/**
@@ -34,7 +34,59 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		if(Input::get('pass') == Input::get('pass2'))
+		{
+			$entradas = array(
+				'username' => Str::title(Str::lower(Input::get('user')))
+			);
+			$reglas = array(
+				'username' => 'required|unique:users'
+			);
+			$validador = Validator::make($entradas, $reglas);
+			if($validador->fails())
+			{
+				return Redirect::to('/usuarios/nuevo')
+				->with('alert-danger', 'Ya se encuentra registrado un usuario con ese nombre de usuario.');
+			}
+			else
+			{
+				$destino  = public_path().'/src/fotos/';
+				if(Input::get('tipo') == "admin")
+				{
+					$foto  = 'admin.png';
+					$grupo = Sentry::findGroupByName("administrador");
+				}
+				if(Input::get('descripcion') == "user")
+				{
+					$foto  = 'female_user.png';
+					$grupo = Sentry::findGroupByName("usuarios");
+				}
+				if (Input::file('foto')) {
+					$extension = Input::file('foto')->getClientOriginalExtension();
+					$foto      = Input::get('user').'.'.$extension;
+					$file      = Input::file('foto');
+					$file->move($destino,$foto);
+				}
+
+				$user = Sentry::createUser([
+				'email'      => Input::get('email'),
+				'username'   => Input::get('user'),
+				'password'   => Input::get('pass'),
+				'first_name' => Str::title(Str::lower(Input::get('nombre'))),
+				'last_name'  => Str::title(Str::lower(Input::get('apellido'))),
+				'picture'    => $foto,
+				'activated'  => 1,
+				]);
+				$user->addGroup($grupo);
+				return Redirect::to('/usuarios')
+				->with('alert-success', 'Se ha agregado el usuario.');
+			}
+		}
+		else
+		{
+			return Redirect::to('/usuarios/nuevo')
+			->with('alert-danger', 'Las contraseñas no coinciden.');
+		}
 	}
 
 	/**

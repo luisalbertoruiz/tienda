@@ -10,7 +10,9 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$proveedores = Proveedor::all();
+		return View::make('proveedores.index')
+		->with('proveedores',$proveedores);
 	}
 
 	/**
@@ -21,7 +23,7 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('proveedores.create');
 	}
 
 	/**
@@ -32,7 +34,28 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$reglas = array(
+				'nombre' => 'required|unique:proveedores'
+		);
+		$validador = Validator::make(Input::all(), $reglas);
+		if($validador->fails())
+		{
+			return Redirect::to('/proveedores')
+			->with('alert-danger', 'Ya se encuentra registrado un proveedor con ese nombre.');
+		}
+		else
+		{
+			$proveedor = new Proveedor();
+			$proveedor->nombre   = Str::title(Str::lower(Input::get('nombre')));
+			$proveedor->empresa  = Str::title(Str::lower(Input::get('empresa')));
+			$proveedor->telefono = Input::get('telefono');
+			$proveedor->celular  = Input::get('celular');
+			$proveedor->email    = Input::get('email');
+			$proveedor->pagina   = Input::get('pagina');
+			$proveedor->save();
+			return Redirect::to('/proveedores')
+			->with('alert-success', 'Se ha agregado el proveedor.');
+		}
 	}
 
 	/**
@@ -44,7 +67,17 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$proveedor = Proveedor::find($id);
+		if (is_null ($proveedor))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('proveedores.show')
+			->with('proveedor',$proveedor);
+		}
+
 	}
 
 	/**
@@ -56,7 +89,16 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$proveedor = Proveedor::find($id);
+		if (is_null ($proveedor))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('proveedores.edit')
+			->with('proveedor',$proveedor);
+		}
 	}
 
 	/**
@@ -68,7 +110,23 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$proveedor = Proveedor::find($id);
+		if (is_null ($proveedor))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$proveedor->nombre   = Str::title(Str::lower(Input::get('nombre')));
+			$proveedor->empresa  = Str::title(Str::lower(Input::get('empresa')));
+			$proveedor->telefono = Input::get('telefono');
+			$proveedor->celular  = Input::get('celular');
+			$proveedor->email    = Input::get('email');
+			$proveedor->pagina   = Input::get('pagina');
+			$proveedor->save();
+			return Redirect::to('/proveedores')
+			->with('alert-success', 'Se ha editado el proveedor.');
+		}
 	}
 
 	/**
@@ -80,7 +138,17 @@ class ProveedoresController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$proveedor = Proveedor::find($id);
+		if (is_null ($proveedor))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$proveedor->delete();
+			return Redirect::to('/proveedores')
+			->with('alert-danger', 'Se ha eliminado el proveedor.');
+		}
 	}
 
 }

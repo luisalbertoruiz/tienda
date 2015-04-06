@@ -21,10 +21,10 @@
 	</header>
 	<ul id="main-menu" class="main-menu">
 		<li>
-			<a href="#"><i class="entypo-basket"></i><span>Punto de venta</span></a>
+			<a href="{{ URL::to('/ventas')}}"><i class="entypo-basket"></i><span>Punto de venta</span></a>
 		</li>
 		<li class="">
-			<a href="#"><i class="entypo-mobile"></i><span>Recargas</span></a>
+			<a href="{{ URL::to('/recargas')}}"><i class="entypo-mobile"></i><span>Recargas</span></a>
 		</li>
 		<li>
 			<a href="#"><i class="entypo-box"></i><span>Almacen</span></a>
@@ -44,10 +44,10 @@
 			<a href=""><i class="entypo-book"></i><span>Catálogos</span></a>
 			<ul>
 				<li>
-					<a href="#"><i class="entypo-usuario"></i><span>Clientes</span></a>
+					<a href="{{ URL::to('/clientes')}}"><i class="entypo-usuario"></i><span>Clientes</span></a>
 				</li>
 				<li>
-					<a href="#"><i class="entypo-globe"></i><span>Proveedores</span></a>
+					<a href="{{ URL::to('/proveedores')}}"><i class="entypo-globe"></i><span>Proveedores</span></a>
 				</li>
 			</ul>
 		</li>
@@ -56,7 +56,7 @@
 			<a href="{{ URL::to('/usuarios')}}"><i class="entypo-usuarios"></i><span>Usuarios</span></a>
 		</li>
 		<li>
-			<a href=""><i class="entypo-cog"></i><span>Otros</span></a>
+			<a href="#"><i class="entypo-cog"></i><span>Otros</span></a>
 		</li>
 	</ul>
 </div>

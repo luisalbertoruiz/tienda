@@ -10,7 +10,9 @@ class ClientesController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$clientes = Cliente::all();
+		return view::make('clientes.index')
+		->with('clientes',$clientes);
 	}
 
 	/**
@@ -21,7 +23,7 @@ class ClientesController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return view::make('clientes.create');
 	}
 
 	/**
@@ -32,7 +34,32 @@ class ClientesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$reglas = array(
+				'tel1' => 'required|unique:clientes',
+				'tel2' => 'unique:clientes',
+				'tel3' => 'unique:clientes'
+		);
+		$validador = Validator::make(Input::all(), $reglas);
+		if($validador->fails())
+		{
+			return Redirect::to('/clientes')
+			->with('alert-danger', 'Ya se encuentra registrado un cliente con ese número.');
+		}
+		else
+		{
+			$cliente = new Cliente();
+			$cliente->nombre      = Str::title(Str::lower(Input::get('nombre')));
+			$cliente->sobrenombre = Str::title(Str::lower(Input::get('alias')));
+			$cliente->tel1        = Input::get('tel1');
+			$cliente->tel1_tipo   = Input::get('tel1_tipo');
+			$cliente->tel2        = Input::get('tel2');
+			$cliente->tel2_tipo   = Input::get('tel2_tipo');
+			$cliente->tel3        = Input::get('tel3');
+			$cliente->tel3_tipo   = Input::get('tel3_tipo');
+			$cliente->save();
+			return Redirect::to('/clientes')
+			->with('alert-success', 'Se ha agregado el cliente.');
+		}
 	}
 
 	/**
@@ -56,7 +83,16 @@ class ClientesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$cliente = Cliente::find($id);
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('clientes.edit')
+			->with('cliente',$cliente);
+		}
 	}
 
 	/**
@@ -68,7 +104,25 @@ class ClientesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$cliente = Cliente::find($id);
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$cliente->nombre = Str::title(Str::lower(Input::get('nombre')));
+			$cliente->sobrenombre = Str::title(Str::lower(Input::get('alias')));
+			$cliente->tel1 = Input::get('tel1');
+			$cliente->tel1_tipo = Input::get('tel1_tipo');
+			$cliente->tel2 = Input::get('tel2');
+			$cliente->tel2_tipo = Input::get('tel2_tipo');
+			$cliente->tel3 = Input::get('tel3');
+			$cliente->tel3_tipo = Input::get('tel3_tipo');
+			$cliente->save();
+			return Redirect::to('/clientes')
+			->with('alert-success', 'Se ha editado el cliente.');
+		}
 	}
 
 	/**
@@ -80,7 +134,17 @@ class ClientesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$cliente = Cliente::find($id);
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$cliente->delete();
+			return Redirect::to('/clientes')
+			->with('alert-danger', 'Se ha eliminado el cliente.');
+		}
 	}
 
 }

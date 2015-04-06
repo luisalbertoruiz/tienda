@@ -1,0 +1,1 @@
+/var/www/tienda/app/views/ventas/create.blade.php

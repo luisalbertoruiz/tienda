@@ -41,7 +41,7 @@ class="page-body"
 		   			</div>
 		   			<div class="form-group">
 		   				<label for="nombre">Nombre</label>
-		   				<input name="nombre" type="text" class="form-control" id="nombre">
+		   				<input name="nombre" type="text" class="form-control" id="nombre" required>
 		   			</div>
 		   			<div class="form-group">
 		   				<label for="marca">Marca</label>
@@ -53,7 +53,7 @@ class="page-body"
 		   			</div>
 		   			<div class="form-group">
 		   				<label for="categoria">Categoría</label>
-		   				<select name="categoria" id="categoria" class="form-control">
+		   				<select name="categoria" id="categoria" class="form-control" required>
 		   					<option value=""></option>
 		   					@foreach ($categorias as $categoria)
 		   					<option value="{{ $categoria->id }}">{{ $categoria->nombre}}</option>

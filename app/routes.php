@@ -81,6 +81,22 @@ Route::get ('/proveedores/mostrar/{id}','ProveedoresController@show');
 Route::get ('/proveedores/editar/{id}','ProveedoresController@edit');
 Route::post('/proveedores/actualizar/{id}','ProveedoresController@update');
 Route::get ('/proveedores/eliminar/{id}','ProveedoresController@destroy');
+// Ventas
+Route::get ('/ventas','VentasController@index');
+Route::get ('/ventas/nuevo','VentasController@create');
+Route::post('/ventas/guardar','VentasController@store');
+Route::get ('/ventas/mostrar/{id}','VentasController@show');
+Route::get ('/ventas/editar/{id}','VentasController@edit');
+Route::post('/ventas/actualizar/{id}','VentasController@update');
+Route::get ('/ventas/eliminar/{id}','VentasController@destroy');
+// Recargas
+Route::get ('/recargas','RecargasController@index');
+Route::get ('/recargas/nuevo','RecargasController@create');
+Route::post('/recargas/guardar','RecargasController@store');
+Route::get ('/recargas/mostrar/{id}','RecargasController@show');
+Route::get ('/recargas/editar/{id}','RecargasController@edit');
+Route::post('/recargas/actualizar/{id}','RecargasController@update');
+Route::get ('/recargas/eliminar/{id}','RecargasController@destroy');
 });
 
 /*Route::get('sentry', function()

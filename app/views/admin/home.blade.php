@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Tienda
+Sistema de Administración
 @stop
 @section('body')
 class="page-body page-fade-only"

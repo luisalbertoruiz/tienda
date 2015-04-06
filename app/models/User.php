@@ -23,4 +23,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+	public function grupo()
+	{
+		return $this->belongsToMany('Grupo','users_groups','user_id','group_id');
+	}
+
 }

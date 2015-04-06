@@ -38,7 +38,7 @@ class ProductosController extends \BaseController {
 	public function store()
 	{
 		$reglas = array(
-			'codigo' => 'required|unique:productos'
+			'codigo' => 'unique:productos'
 		);
 		$validador = Validator::make(Input::all(), $reglas);
 		if($validador->fails())

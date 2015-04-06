@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Categorias
+Categorias | Nueva
 @stop
 @section('body')
 class="page-body"

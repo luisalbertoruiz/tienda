@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Categoria
+Usuarios
 @stop
 @section('body')
 class="page-body"
@@ -20,7 +20,7 @@ class="page-body"
 			</li>
 		</ol>
 		<hr>
-		<a href="{{ URL::to('/usuarioss/nuevo')}}" class="btn btn-success pull-right">Nuevo<i class="entypo-plus"></i></a>
+		<a href="{{ URL::to('/usuarios/nuevo')}}" class="btn btn-success pull-right">Nuevo<i class="entypo-plus"></i></a>
 		<br><br><br>
 		<table class="table table-bordered datatable" id="tabla">
 			<thead>
@@ -37,7 +37,9 @@ class="page-body"
 			<tr>
 				<td>{{ $usuario->first_name." ".$usuario->last_name }}</td>
 				<td>{{ $usuario->username }}</td>
-				<td>{{ $usuario->descripcion }}</td>
+				@foreach($usuario->grupo as $grupo)
+				<td>{{ $grupo->name }}</td>
+				@endforeach
 				<td>
 					<?php setlocale(LC_TIME, 'es_MX.UTF-8'); ?>
 					{{ strftime("%a %e de %B del %G a las %R",strtotime($usuario->last_login)) }}</td>
