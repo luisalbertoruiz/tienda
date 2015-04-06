@@ -58,6 +58,10 @@ Route::post('/productos/guardar','ProductosController@store');
 Route::get ('/productos/mostrar/{id}','ProductosController@show');
 Route::get ('/productos/editar/{id}','ProductosController@edit');
 Route::post('/productos/actualizar/{id}','ProductosController@update');
+<<<<<<< HEAD
+=======
+Route::get ('/productos/eliminar/{id}','ProductosController@destroy');
+>>>>>>> 33e603d2693f5a7468bf3aed20f2fd47951d12cb
 // Compras
 Route::get ('/compras','ComprasController@index');
 Route::get ('/compras/nuevo','ComprasController@create');
@@ -65,6 +69,7 @@ Route::post('/compras/guardar','ComprasController@store');
 Route::get ('/compras/mostrar/{id}','ComprasController@show');
 Route::get ('/compras/editar/{id}','ComprasController@edit');
 Route::post('/compras/actualizar/{id}','ComprasController@update');
+<<<<<<< HEAD
 // Clientes
 Route::get ('/clientes','ClientesController@index');
 Route::get ('/clientes/nuevo','ClientesController@create');
@@ -97,6 +102,9 @@ Route::get ('/recargas/mostrar/{id}','RecargasController@show');
 Route::get ('/recargas/editar/{id}','RecargasController@edit');
 Route::post('/recargas/actualizar/{id}','RecargasController@update');
 Route::get ('/recargas/eliminar/{id}','RecargasController@destroy');
+=======
+Route::get ('/compras/eliminar/{id}','ComprasController@destroy');	
+>>>>>>> 33e603d2693f5a7468bf3aed20f2fd47951d12cb
 });
 
 /*Route::get('sentry', function()

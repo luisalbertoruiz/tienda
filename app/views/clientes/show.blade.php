@@ -1,1 +1,0 @@
-/var/www/tienda/app/views/clientes/show.blade.php
