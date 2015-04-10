@@ -27,7 +27,6 @@ class ComprasController extends \BaseController {
 		$productos = Producto::all();
 		return View::make('compras.create')
 		->with('productos',$productos);
-
 	}
 
 	/**
@@ -40,9 +39,26 @@ class ComprasController extends \BaseController {
 	{
 		$compra              = new Compra();
 		$compra->costo       = Input::get('costo');
+		$compra->costo_total = (Input::get('costo') * Input::get('cantidad'));
 		$compra->cantidad    = Input::get('cantidad');
 		$compra->producto_id = Input::get('producto');
 		$compra->save();
+		$costo = Producto::find(Input::get('producto'));
+		$costos = Compra::all();
+		if($costo->costo == 0)
+		{
+			$costo->existencia = Input::get('cantidad');
+			$costo->costo = Input::get('costo');
+			$costo->save();
+		}
+		else
+		{
+			$costo->existencia = (Input::get('cantidad') + $costo->existencia);
+			$costo->save();
+			$costo->costo = ((DB::table('compras')->where('producto_id',Input::get('producto'))->sum('costo_total') + Input::get('costo')) / $costo->existencia);
+			$costo->save();
+		}
+
 		return Redirect::to('/compras')
 		->with('alert-success', 'Se ha agregado la compra.');
 	}
