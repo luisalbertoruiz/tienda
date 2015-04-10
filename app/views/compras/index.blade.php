@@ -33,6 +33,7 @@ class="page-body"
 					<th>Producto</th>
 					<th>Cantidad</th>
 					<th>Costo</th>
+					<th>Costo Total</th>
 					<th>Fecha</th>
 					<th>Acciones</th>
 				</tr>
@@ -44,7 +45,8 @@ class="page-body"
 				<td>{{ $compra->producto->codigo }}</td>
 				<td>{{ $compra->producto->nombre.' '.$compra->producto->marca.' '.$compra->producto->modelo }}</td>
 				<td>{{ $compra->cantidad }}</td>
-				<td>{{ $compra->costo }}</td>
+				<td>$ {{ $compra->costo }}</td>
+				<td>$ {{ $compra->costo_total }}</td>
 				<td>{{ date('d-m-Y',strtotime($compra->created_at)) }}</td>
 				<td>
 				<a href="{{URL::to('/compras/mostrar/'.$compra->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>

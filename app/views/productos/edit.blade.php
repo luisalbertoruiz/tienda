@@ -61,16 +61,8 @@ class="page-body"
 		   				</select>
 		   			</div>
 		   			<div class="form-group">
-		   				<label for="costo">Costo</label>
-		   				<input name="costo" type="text" class="form-control" id="costo" value="{{ $producto->costo }}">
-		   			</div>
-		   			<div class="form-group">
 		   				<label for="precio">Precio</label>
 		   				<input name="precio" type="text" class="form-control" id="precioo" value="{{ $producto->precio }}">
-		   			</div>
-		   			<div class="form-group">
-		   				<label for="existencia">Existencia</label>
-		   				<input name="existencia" type="text" class="form-control" id="existencia" value="{{ $producto->existencia }}">
 		   			</div>
 		   			<div class="form-group">
 		   				<label for="descripcion">Descripción</label>

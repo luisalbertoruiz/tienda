@@ -10,7 +10,9 @@ class VentasController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$productos = Producto::all();
+		return View::make('ventas.index')
+		->with('productos',$productos);
 	}
 
 	/**
@@ -81,6 +83,20 @@ class VentasController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 * DELETE /ventas/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function recargas()
+	{
+		$clientes = Cliente::all();
+		return View::make('ventas.recargas')
+		->with('clientes',$clientes);
 	}
 
 }

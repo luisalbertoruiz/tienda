@@ -49,7 +49,7 @@ class="page-body"
 		   				<input name="cantidad" type="text" class="form-control" id="cantidad">
 		   			</div>
 		   			<div class="form-group">
-		   				<label for="costo">Costo</label>
+		   				<label for="costo">Costo Unitario</label>
 		   				<input name="costo" type="text" class="form-control" id="costo">
 		   			</div>
 		   			<a href="{{ URL::previous() }}" class="btn btn-orange">Regresar</a>

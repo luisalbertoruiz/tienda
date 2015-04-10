@@ -43,19 +43,20 @@ class ComprasController extends \BaseController {
 		$compra->cantidad    = Input::get('cantidad');
 		$compra->producto_id = Input::get('producto');
 		$compra->save();
-		$costo = Producto::find(Input::get('producto'));
-		$costos = Compra::all();
-		if($costo->costo == 0)
+		$producto = Producto::find(Input::get('producto'));
+		$compras = Compra::all();
+		if($producto->costo == 0)
 		{
-			$costo->existencia = Input::get('cantidad');
-			$costo->costo = Input::get('costo');
-			$costo->save();
+			$producto->existencia = Input::get('cantidad');
+			$producto->costo = Input::get('costo');
+			$producto->save();
 		}
 		else
 		{
-			$costo->existencia = (Input::get('cantidad') + $costo->existencia);
-			$costo->save();
-			$costo->costo = ((DB::table('compras')->where('producto_id',Input::get('producto'))->sum('costo_total') + Input::get('costo')) / $costo->existencia);
+			$producto->existencia = (Input::get('cantidad') + $producto->existencia);
+			$producto->save();
+			$costo = Producto::find(Input::get('producto'));
+			$costo->costo = ((DB::table('compras')->where('producto_id',Input::get('producto'))->sum('costo_total')) / $costo->existencia);
 			$costo->save();
 		}
 

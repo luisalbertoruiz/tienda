@@ -89,14 +89,7 @@ Route::get ('/ventas/mostrar/{id}','VentasController@show');
 Route::get ('/ventas/editar/{id}','VentasController@edit');
 Route::post('/ventas/actualizar/{id}','VentasController@update');
 Route::get ('/ventas/eliminar/{id}','VentasController@destroy');
-// Recargas
-Route::get ('/recargas','RecargasController@index');
-Route::get ('/recargas/nuevo','RecargasController@create');
-Route::post('/recargas/guardar','RecargasController@store');
-Route::get ('/recargas/mostrar/{id}','RecargasController@show');
-Route::get ('/recargas/editar/{id}','RecargasController@edit');
-Route::post('/recargas/actualizar/{id}','RecargasController@update');
-Route::get ('/recargas/eliminar/{id}','RecargasController@destroy');
+Route::get ('/recargas','VentasController@recargas');
 });
 
 /*Route::get('sentry', function()

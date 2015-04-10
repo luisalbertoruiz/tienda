@@ -61,16 +61,14 @@ class="page-body"
 		   				</select>
 		   			</div>
 		   			<div class="form-group">
-		   				<label for="costo">Costo</label>
-		   				<input name="costo" type="text" class="form-control" id="costo">
+		   				<input name="costo" type="hidden" class="form-control" id="costo" value="0">
 		   			</div>
 		   			<div class="form-group">
 		   				<label for="precio">Precio</label>
 		   				<input name="precio" type="text" class="form-control" id="precioo">
 		   			</div>
 		   			<div class="form-group">
-		   				<label for="existencia">Existencia</label>
-		   				<input name="existencia" type="text" class="form-control" id="existencia">
+		   				<input name="existencia" type="hidden" class="form-control" id="existencia" value="0">
 		   			</div>
 		   			<div class="form-group">
 		   				<label for="descripcion">Descripción</label>
